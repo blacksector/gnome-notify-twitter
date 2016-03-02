@@ -29,9 +29,15 @@ con_secret_key = "Consumer Secret Here"
 ```
 
 ##### Find twitter ID here: http://mytwitterid.com/   
-Replace the INTEGER ID from the website with `TWITTER ID HERE` inside of the gnomeNotify.py
+Replace the INTEGER ID from the website with `"TWITTER ID HERE"` inside of the gnomeNotify.py twitterID variable.
 
 Next just run the script and it should automatically start to identify new likes or retweets and messages and will forward them to your Gnome notification tray :)
+
+##### Privacy?
+If you don't want your private messages printed within the notification, simply make sure the privacy variable reads like so:
+`privacy = True`
+To turn it off and to actually see direct message content, make sure it looks like this:
+`privacy = False`
 
 ### Contributions
 Please feel free to send in any pull requests you feel is towards something better :)

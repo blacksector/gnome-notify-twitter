@@ -19,13 +19,16 @@ twitter_userstream = TwitterStream(auth=auth, domain='userstream.twitter.com')
 # Privacy?
 privacy = True
 
+# Find twitter ID and place below
+twitterID = "TWITTER ID HERE"
+
 #iterate through entire list of stream input
 for a in twitter_userstream.user():
     if 'unfavorite' in str(a):
         try:
             msg = a
             # We only want to show if someone favs my stuff
-            if int(msg["target_object"]["user"]["id"]) == TWITTER ID HERE:
+            if int(msg["target_object"]["user"]["id"]) == int(twitterID):
                 name = msg["source"]["name"]+" unliked your tweet"
                 tweet = "Tweet: "+msg["target_object"]["text"]
                 Notify.Notification.new(name, tweet, "/root/Desktop/twitter-128.png").show()
@@ -35,7 +38,7 @@ for a in twitter_userstream.user():
         try:
             msg = a
             # We only want to show if someone unfavs my stuff
-            if int(msg["target_object"]["user"]["id"]) == TWITTER ID HERE:
+            if int(msg["target_object"]["user"]["id"]) == int(twitterID):
                 name = msg["source"]["name"]+" liked your tweet"
                 tweet = "Tweet: "+msg["target_object"]["text"]
                 Notify.Notification.new(name, tweet, "/root/Desktop/twitter-128.png").show()
@@ -46,7 +49,7 @@ for a in twitter_userstream.user():
         try:
             msg = a
             # We only want to show if someone retweets my stuff
-            if int(msg["retweeted_status"]["user"]["id"]) == TWITTER ID HERE:
+            if int(msg["retweeted_status"]["user"]["id"]) == int(twitterID):
                 name = msg["user"]["name"]+" retweeted you"
                 tweet = "Tweet: "+msg["text"]
                 Notify.Notification.new(name, tweet, "/root/Desktop/twitter-128.png").show()
@@ -57,7 +60,7 @@ for a in twitter_userstream.user():
         try:
             msg = a
             # We only want to show if someone unfavs my stuff
-            if int(msg["status"]["user_id"]) != TWITTER ID HERE:
+            if int(msg["status"]["user_id"]) != int(twitterID):
                 Notify.Notification.new(msg["status"]["user_id"]+" unretweeted you", "Tweet: UNKNOW TWEET", "/root/Desktop/twitter-128.png").show()
         except:
             pass
